@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A215D316-D05A-4FB8-B3F5-E6B122311CBC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>U3DSocketLib</RootNamespace>
+    <AssemblyName>U3DSocketLib</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>False</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>False</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>True</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>False</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Socket\iocp.cs" />
+    <Compile Include="Socket\Common\HandlerBase.cs" />
+    <Compile Include="Socket\Common\NetEncrypt.cs" />
+    <Compile Include="Socket\Common\NetQueue.cs" />
+    <Compile Include="Socket\Common\NetReadBuff.cs" />
+    <Compile Include="Socket\Common\NetTool.cs" />
+    <Compile Include="Socket\Common\NetWriteBuff.cs" />
+    <Compile Include="Socket\Common\PackBase.cs" />
+    <Compile Include="Socket\Common\Packing.cs" />
+    <Compile Include="Socket\Common\StreamBuffer.cs" />
+    <Compile Include="Socket\Define\NET_DEFINE.cs" />
+    <Compile Include="Socket\Dispatch\Dispatch.cs" />
+    <Compile Include="Socket\Factory\DispatchFactory.cs" />
+    <Compile Include="Socket\Factory\PacketFactory.cs" />
+    <Compile Include="Socket\Manager\HandlerManager.cs" />
+    <Compile Include="Socket\Manager\ISessionManager.cs" />
+    <Compile Include="Socket\Manager\PacketFactoryManager.cs" />
+    <Compile Include="Socket\Manager\RegisterFactoryManager.cs" />
+    <Compile Include="Socket\Session\ClientSession.cs" />
+    <Compile Include="Socket\Session\DummyClientSession.cs" />
+    <Compile Include="Socket\Session\IClientSession.cs" />
+    <Compile Include="Socket\Session\IClientSessionManager.cs" />
+    <Compile Include="Socket\Session\IDummyClientSession.cs" />
+    <Compile Include="Socket\Session\IDummySession.cs" />
+    <Compile Include="Socket\Session\ISession.cs" />
+    <Compile Include="Socket\Sever\DummyNetworkSever.cs" />
+    <Compile Include="Socket\Sever\INetworkSever.cs" />
+    <Compile Include="Socket\Sever\NetwrokSever.cs" />
+    <Compile Include="Socket\Sever\Overlapped.cs" />
+    <Compile Include="Socket\Sever\SocketAsyncEventArgsAccept.cs" />
+    <Compile Include="Socket\Sever\Accept\Accept.cs" />
+    <Compile Include="Socket\Sever\Accept\AcceptManager.cs" />
+    <Compile Include="Socket\Sever\Accept\DummyAccept.cs" />
+    <Compile Include="Socket\Sever\Accept\DummyAcceptManager.cs" />
+    <Compile Include="Socket\Sever\Accept\IAccept.cs" />
+    <Compile Include="Socket\Sever\Accept\IAcceptManager.cs" />
+    <Compile Include="Socket\Sever\Dispatch\SeverDispatch.cs" />
+    <Compile Include="Socket\Sever\Session\DummySeverSession.cs" />
+    <Compile Include="Socket\Sever\Session\DummySeverSessionManager.cs" />
+    <Compile Include="Socket\Sever\Session\IDummySeverSession.cs" />
+    <Compile Include="Socket\Sever\Session\ISeverSession.cs" />
+    <Compile Include="Socket\Sever\Session\ISeverSessionManager.cs" />
+    <Compile Include="Socket\Sever\Session\SeverSession.cs" />
+    <Compile Include="Socket\Sever\Session\SeverSessionManager.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Socket\" />
+  </ItemGroup>
+</Project>
