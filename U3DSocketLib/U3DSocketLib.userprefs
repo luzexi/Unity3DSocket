@@ -1,0 +1,47 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="U3DSocketLib/Socket/Sever/SocketAsyncEventArgsAccept.cs">
+    <Files>
+      <File FileName="U3DSocketLib/MyClass.cs" Line="1" Column="1" />
+      <File FileName="U3DSocketLib/Socket/Common/NetTool.cs" Line="11" Column="1" />
+      <File FileName="U3DSocketLib/Socket/Sever/Accept/Accept.cs" Line="28" Column="36" />
+      <File FileName="U3DSocketLib/Socket/Sever/Accept/AcceptManager.cs" Line="1" Column="1" />
+      <File FileName="U3DSocketLib/Socket/Sever/Accept/DummyAccept.cs" Line="1" Column="1" />
+      <File FileName="U3DSocketLib/Socket/Sever/Accept/DummyAcceptManager.cs" Line="1" Column="1" />
+      <File FileName="U3DSocketLib/Socket/Sever/Accept/IAccept.cs" Line="1" Column="1" />
+      <File FileName="U3DSocketLib/Socket/Sever/Accept/IAcceptManager.cs" Line="16" Column="2" />
+      <File FileName="U3DSocketLib/Socket/Sever/DummyNetworkSever.cs" Line="23" Column="41" />
+      <File FileName="U3DSocketLib/Socket/Sever/INetworkSever.cs" Line="1" Column="1" />
+      <File FileName="U3DSocketLib/Socket/Sever/NetwrokSever.cs" Line="1" Column="1" />
+      <File FileName="U3DSocketLib/Socket/Sever/Overlapped.cs" Line="1" Column="1" />
+      <File FileName="U3DSocketLib/Socket/Sever/SocketAsyncEventArgsAccept.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="U3DSocketLib" expanded="True">
+            <Node name="References" expanded="True" />
+            <Node name="Socket" expanded="True">
+              <Node name="Session" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="ClassPad">
+        <State expanded="True" selected="True" />
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State>
+          <Value>bytes[0]</Value>
+          <Value>bytes[1]</Value>
+          <Value>m</Value>
+          <Value>n</Value>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
