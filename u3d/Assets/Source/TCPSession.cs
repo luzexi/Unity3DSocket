@@ -266,7 +266,9 @@ namespace Game.Network
                 int bytesCount = m_cSocket.EndReceive(ar);
                 if (bytesCount > 0)
                 {
-                    m_cReceiveQueue.Push(mReceiveArray);
+                    byte[] data = new byte[bytesCount];
+                    Array.Copy(mReceiveArray, 0 , data, 0 , bytesCount);
+                    m_cReceiveQueue.Push(data);
 
                     Receive();
                 }
@@ -362,11 +364,8 @@ namespace Game.Network
 
             for( ; m_cReceiveBuffer.GetSize() >= HEAD_SIZE ; )
             {
-                // PacketBase head = Packing.GetPacketHead(m_cReceiveBuffer.m_lstBuffer, m_cReceiveBuffer.ReadIndex, m_cReceiveBuffer.WriteIndex);
-                UInt32 pack_cmd = 0;
                 UInt16 pack_size = 0;
                 int offset = 0;
-                offset += tcpsession_decode32u(m_cReceiveBuffer.m_lstBuffer, offset, ref pack_cmd);
                 offset += tcpsession_decode16u(m_cReceiveBuffer.m_lstBuffer, offset, ref pack_size);
                 if (m_cReceiveBuffer.GetSize() >= HEAD_SIZE + pack_size)
                 {
