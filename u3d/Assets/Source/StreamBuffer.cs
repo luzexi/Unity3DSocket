@@ -13,7 +13,7 @@ namespace Game.Network
 {
     public class StreamBuffer
     {
-        private const int DEFAULT_BUFFER_SIZE = 64 * 256;
+        private const int DEFAULT_BUFFER_SIZE = 256;
         private const int ADDITION_SIZE = 256;
 
         public byte[] m_lstBuffer; //buffer
@@ -67,8 +67,7 @@ namespace Game.Network
             }
             if (this.m_iWrite + size >= this.m_lstBuffer.Length)
             {
-                int size_num = size/ADDITION_SIZE;
-                if(size_num <= 0) size_num = 1; 
+                int size_num = size/ADDITION_SIZE + 1;
                 AdditionSize(size_num);
             }
             //Array.Reverse(buffer);//大小端转换

@@ -240,6 +240,8 @@ namespace Game.Network
         {
             try
             {
+                if(m_cStatus != SESSION_STATUS.CONNECT_SUCCESS) return false;
+
                 if (m_cSocket == null)
                 {
                     throw new Exception("Error , the socket is null.");
@@ -282,8 +284,8 @@ namespace Game.Network
 
         public void Update()
         {
-            ProcessPacket();
-            Send();
+            ProcessReceive();
+            ProcessSend();
         }
 
         public void Send(byte[] send_buffer)
@@ -291,10 +293,11 @@ namespace Game.Network
             mlstSend.Add(send_buffer);
         }
 
-        private void Send()
+        private void ProcessSend()
         {
             try
             {
+                if(m_cStatus != SESSION_STATUS.CONNECT_SUCCESS) return;
                 if( Time.time - mSendStartTime < SEND_INTERVAL_TIME ) return;
 
                 int _packsize = 0;
@@ -348,7 +351,7 @@ namespace Game.Network
             }
         }
 
-        private void ProcessPacket()
+        private void ProcessReceive()
         {
             m_cReceiveQueue.Switch();
 
