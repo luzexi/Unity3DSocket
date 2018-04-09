@@ -307,7 +307,7 @@ namespace Game.Network
                 m_cSendBuffer.Clear();
                 for( int i = 0 ; i < mlstSend.Count ; i++ )
                 {
-                    if(mlstSend[i].Length + _packsize > SEND_MAX_SIZE)
+                    if(_packindex >= 0 && mlstSend[i].Length + _packsize > SEND_MAX_SIZE)
                     {
                         break;
                     }
