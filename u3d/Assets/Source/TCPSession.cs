@@ -100,7 +100,7 @@ namespace Game.Network
         private byte[] mReceiveArray;
         private StreamBuffer m_cReceiveBuffer;  //receive buffer
         private StreamBuffer m_cSendBuffer;     //send buffer
-        private List<byte[]> mlstSend;  //send queue
+        private Queue<byte[]> mQueSend;  //send queue
         private SwitchQueue<byte[]> m_cReceiveQueue;  //receive queue
 
         private string m_strAddress;    //address of server
@@ -121,7 +121,7 @@ namespace Game.Network
             m_cReceiveBuffer = new StreamBuffer();
             m_cSendBuffer = new StreamBuffer();
 
-            mlstSend = new List<byte[]>();
+            mQueSend = new Queue<byte[]>();
             m_cReceiveQueue = new SwitchQueue<byte[]>(128);
 
             mCallback = _callback;
@@ -292,7 +292,7 @@ namespace Game.Network
 
         public void Send(byte[] send_buffer)
         {
-            mlstSend.Add(send_buffer);
+            mQueSend.Enqueue(send_buffer);
         }
 
         private void ProcessSend()
@@ -303,17 +303,17 @@ namespace Game.Network
                 if( Time.time - mSendStartTime < SEND_INTERVAL_TIME ) return;
 
                 int _packsize = 0;
-                int _packindex = -1;
                 m_cSendBuffer.Clear();
-                for( int i = 0 ; i < mlstSend.Count ; i++ )
+                for( ; mQueSend.Count > 0 ; )
                 {
-                    if(_packindex >= 0 && mlstSend[i].Length + _packsize > SEND_MAX_SIZE)
+                    byte[] que_buffer = mQueSend.Peek();
+                    if((_packsize > 0 && que_buffer.Length + _packsize > SEND_MAX_SIZE) || que_buffer == null)
                     {
                         break;
                     }
-                    _packsize += mlstSend[i].Length;
-                    _packindex = i;
-                    m_cSendBuffer.Write(mlstSend[i], mlstSend[i].Length);
+                    _packsize += que_buffer.Length;
+                    m_cSendBuffer.Write(que_buffer, que_buffer.Length);
+                    mQueSend.Dequeue();
                 }
                 if (m_cSendBuffer.GetSize() > 0)
                 {
